@@ -114,7 +114,6 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # TO DO: display the most common month
     month_mode = df['Start Time'].dt.month.mode()[0]
     month_name = ''
 
@@ -124,13 +123,11 @@ def time_stats(df):
 
     print('The most common month: {}'.format(month_name.title()))
 
-    # TO DO: display the most common day of week
     month_mode = df['Start Time'].dt.weekday_name.mode()[0]
 
 
     print('The most common day of week: {}'.format(month_mode.title()))
 
-    # TO DO: display the most common start hour
     hour_mode = df['Start Time'].dt.hour.mode()[0]
 
     print('The most common start hour: {}'.format(hour_mode))
@@ -145,19 +142,13 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # TO DO: display most commonly used start station
 
     print('The most commonly used start station: {}'.format(df['Start Station'].mode()[0]))
-
-
-    # TO DO: display most commonly used end station
     print('The most commonly used end station: {}'.format(df['End Station'].mode()[0]))
 
     most_frequent_combination = df.groupby(['Start Station', 'End Station']).size().nlargest(1)
 
-    # TO DO: display most frequent combination of start station and end station trip
     print('The most frequent combination of start station and end station trip: {} - {}'.format(most_frequent_combination.index.get_level_values('Start Station')[0], most_frequent_combination.index.get_level_values('End Station')[0]))
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -168,15 +159,8 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # TO DO: display total travel time
-
     print('Total travel time: {}'.format(df['Trip Duration'].sum()))
-
-
-    # TO DO: display mean travel time
     print('Total travel time: {}'.format(df['Trip Duration'].mean()))
-
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -187,18 +171,15 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # TO DO: Display counts of user types
     print('Counts of user types:')
     print(df['User Type'].value_counts())
 
 
-    # TO DO: Display counts of gender
 
     if 'Gender' in df:
         print('Counts of gender:')
         print(df['Gender'].value_counts())
 
-    # TO DO: Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df:
         print('Earliest year of birth:')
         print(df['Birth Year'].sort_values().iloc[0])
