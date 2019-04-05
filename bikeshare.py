@@ -24,7 +24,7 @@ VALID_MONTHS_VALUES = {
     'december': 12
 }
 
-VALID_WEEK_DAY_VALUES = [
+VALID_WEEK_DAYS_VALUES = [
     'all',
     'monday',
     'tuesday',
@@ -78,7 +78,7 @@ def get_filters():
         try:
             day = input('Write the name of the week to analyze (all, monday, tuesday, ... sunday): ').lower()
 
-            if day in VALID_WEEK_DAY_VALUES:
+            if day in VALID_WEEK_DAYS_VALUES:
                 print('Valid month :)')
                 break
             else:
