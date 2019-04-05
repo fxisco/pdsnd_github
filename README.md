@@ -15,3 +15,6 @@ bikeshare.py
 
 ### License
 MIT
+
+### Author
+Francisco Payés Erroa
