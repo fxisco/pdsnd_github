@@ -2,9 +2,12 @@ import time
 import pandas as pd
 import numpy as np
 
-CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
-              'washington': 'washington.csv' }
+CITY_DATA = {
+    'chicago': 'chicago.csv',
+    'new york city': 'new_york_city.csv',
+    'washington': 'washington.csv'
+}
+
 VALID_MONTHS_VALUES = {
     'all': -1,
     'january': 1,
@@ -31,6 +34,9 @@ VALID_WEEK_DAY_VALUES = [
     'saturday',
     'sunday'
 ]
+
+def print_separator():
+    print('-'*40)
 
 def get_filters():
     """
@@ -80,7 +86,8 @@ def get_filters():
         except:
             print('That\'s not a valid input')
 
-    print('-'*40)
+    print_separator()
+
     return city, month, day
 
 
@@ -125,7 +132,6 @@ def time_stats(df):
 
     month_mode = df['Start Time'].dt.weekday_name.mode()[0]
 
-
     print('The most common day of week: {}'.format(month_mode.title()))
 
     hour_mode = df['Start Time'].dt.hour.mode()[0]
@@ -133,7 +139,8 @@ def time_stats(df):
     print('The most common start hour: {}'.format(hour_mode))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+
+    print_separator()
 
 
 def station_stats(df):
@@ -150,7 +157,8 @@ def station_stats(df):
 
     print('The most frequent combination of start station and end station trip: {} - {}'.format(most_frequent_combination.index.get_level_values('Start Station')[0], most_frequent_combination.index.get_level_values('End Station')[0]))
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+
+    print_separator()
 
 
 def trip_duration_stats(df):
@@ -162,7 +170,8 @@ def trip_duration_stats(df):
     print('Total travel time: {}'.format(df['Trip Duration'].sum()))
     print('Total travel time: {}'.format(df['Trip Duration'].mean()))
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+
+    print_separator()
 
 
 def user_stats(df):
@@ -173,8 +182,6 @@ def user_stats(df):
 
     print('Counts of user types:')
     print(df['User Type'].value_counts())
-
-
 
     if 'Gender' in df:
         print('Counts of gender:')
@@ -191,7 +198,7 @@ def user_stats(df):
         print(df['Birth Year'].mode()[0])
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_separator()
 
 def show_raw_data(df):
     page = 0
@@ -212,7 +219,7 @@ def show_raw_data(df):
         except:
             print('That\'s not a valid input')
 
-    print('-'*40)
+    print_separator()
 
 def main():
     while True:
