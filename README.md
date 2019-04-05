@@ -12,3 +12,6 @@ bikeshare.py
 
 ### Credits
 [Pandas Docs](http://pandas.pydata.org/pandas-docs/stable/)
+
+### License
+MIT
